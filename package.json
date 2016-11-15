@@ -1,0 +1,30 @@
+{
+  "name": "platformer-web-server",
+  "version": "1.0.0",
+  "description": "The web server for my platformer game that will let you upload and download maps for the game",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eniallator/Platformer-Web-Server.git"
+  },
+  "author": "eniallator",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/eniallator/Platformer-Web-Server/issues"
+  },
+  "homepage": "https://github.com/eniallator/Platformer-Web-Server#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodemon": "^1.10.2"
+  },
+  "devDependencies": {
+    "css-loader": "^0.25.0",
+    "style-loader": "^0.13.1",
+    "webpack": "1.13.2",
+    "webpack-dev-middleware": "^1.8.4"
+  }
+}
