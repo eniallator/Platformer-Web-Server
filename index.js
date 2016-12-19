@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require("path");
 var engines = require("consolidate");
+var config = require("./config");
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -22,11 +23,7 @@ app.engine("template", engines.hogan);
 app.use("/build", express.static("build"));
 
 app.get('/', function (req, res) {
-  res.render("index.template", {
-    name : "Niall",
-    version : "1.0.1",
-    type : "Alpha"
-  });
+  res.render("index.template", Object.assign({ name : "Niall" }, config));
 });
 
 app.listen(port, function () {

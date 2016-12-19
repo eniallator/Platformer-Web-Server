@@ -7,8 +7,8 @@
 </head>
   <body>
     HELLO {{name}} <br>
-    <a href="https://github.com/eniallator/platformer/releases/download/{{type}}{{version}}/platformer_windows_V{{version}}.zip">platformer_windows</a><br>
-    <a href="https://github.com/eniallator/platformer/releases/download/{{type}}{{version}}/platformer_mac_V{{version}}.zip">platformer_mac</a>
+    <a href="https://github.com/eniallator/platformer/releases/download/{{platformerLabel}}{{platformerVersion}}/platformer_windows_V{{platformerVersion}}.zip">platformer_windows</a><br>
+    <a href="https://github.com/eniallator/platformer/releases/download/{{platformerLabel}}{{platformerVersion}}/platformer_mac_V{{platformerVersion}}.zip">platformer_mac</a>
     <script src="build/bundle.js"></script>
   </body>
 </html>
