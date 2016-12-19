@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require("path");
-var hogan = require("hogan.js");
 var engines = require("consolidate");
 var app = express();
 var port = process.env.PORT || 3000;
