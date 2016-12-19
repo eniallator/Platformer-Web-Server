@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Platformer Website</title>
+</head>
+  <body>
+    HELLO {{name}} <br>
+    <a href="https://github.com/eniallator/platformer/releases/download/{{type}}{{version}}/platformer_windows_V{{version}}.zip">platformer_windows</a><br>
+    <a href="https://github.com/eniallator/platformer/releases/download/{{type}}{{version}}/platformer_mac_V{{version}}.zip">platformer_mac</a>
+    <script src="build/bundle.js"></script>
+  </body>
+</html>
