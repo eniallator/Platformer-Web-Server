@@ -5,8 +5,6 @@ var config = require("./config");
 var app = express();
 var port = process.env.PORT || 3000;
 
-console.log(config)
-
 function getDistUrl(distType) {
   return "https://github.com/eniallator/platformer/releases/download/"
     + config.platformerLabel
@@ -37,6 +35,10 @@ app.get('/', function (req, res) {
     windowsDist: getDistUrl("windows"),
     macDist: getDistUrl("mac"),
    });
+});
+
+app.get('/maps', function (req, res) {
+  res.send("foo")
 });
 
 app.listen(port, function () {
