@@ -5,6 +5,15 @@ var config = require("./config");
 var app = express();
 var port = process.env.PORT || 3000;
 
+console.log(config)
+
+function getDistUrl(distType) {
+  return "https://github.com/eniallator/platformer/releases/download/"
+    + config.platformerLabel
+    + config.platformerVersion
+    + `/platformer_${distType}_V${config.platformerVersion}.zip`;
+}
+
 if (process.env.npm_lifecycle_event === "dev") {
   var webpackMiddleware = require("webpack-dev-middleware");
   var webpackConfig = require("./webpack.config");
@@ -23,7 +32,11 @@ app.engine("template", engines.hogan);
 app.use("/build", express.static("build"));
 
 app.get('/', function (req, res) {
-  res.render("index.template", Object.assign({ name : "Niall" }, config));
+  res.render("index.template", {
+    name : "Niall",
+    windowsDist: getDistUrl("windows"),
+    macDist: getDistUrl("mac"),
+   });
 });
 
 app.listen(port, function () {
