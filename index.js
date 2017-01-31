@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require("path");
+var fs = require("fs");
 var engines = require("consolidate");
 var config = require("./config");
 var app = express();
@@ -37,7 +38,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/maps', function (req, res) {
-  res.send("foo")
+  fs.readdir("./uploads", function (err, fileList) {
+    res.send(fileList);
+  });
 });
 
 app.listen(port, function () {
