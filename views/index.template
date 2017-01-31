@@ -9,6 +9,7 @@
   <body>
     <div class="main-content">
       <h1>Niall's Platformer<h1>
+      <hr/>
       <h2>Choose your platform:</h2>
       <a class="downloads" href="{{windowsDist}}">Windows download</a><br>
       <a class="downloads" href="{{macDist}}">Mac download</a>
