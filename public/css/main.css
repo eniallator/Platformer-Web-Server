@@ -1,0 +1,21 @@
+body {
+  font-family: 'Gochi Hand', cursive;
+}
+
+.main-content {
+  text-align: center;
+  width: 60%;
+  margin: 0 20%;
+}
+
+.main-content h1 {
+  font-size: 4em;
+}
+
+.main-content h2 {
+  font-size: 2em;
+}
+
+.downloads {
+  font-family: 'Kalam', cursive;
+}

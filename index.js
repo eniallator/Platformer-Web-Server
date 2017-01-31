@@ -31,7 +31,6 @@ app.use("/build", express.static("build"));
 
 app.get('/', function (req, res) {
   res.render("index.template", {
-    name : "Niall",
     windowsDist: getDistUrl("windows"),
     macDist: getDistUrl("mac"),
    });
