@@ -43,6 +43,18 @@ app.get('/maps', function (req, res) {
   });
 });
 
+app.get('/maps/:id', function(req, res) {
+  console.log(req.params.id);
+
+  res.setHeader("Content-Disposition", `attachment; filename=${req.params.id}`);
+  res.setHeader("Content-Type", "application/force-download");
+
+  console.log("Downloading...")
+
+  // ALI: Does not work, pipe instead (and then explain streams)
+  res.download(path.join(__dirname, "uploads", req.params.id));
+});
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });

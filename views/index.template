@@ -15,6 +15,9 @@
       <a class="downloads" href="{{macDist}}">Mac download</a>
       <hr/>
       <h2>List of downloadable maps:</h2>
+      <div id="mapList">
+
+      </div>
     </div>
     <script src="build/bundle.js"></script>
   </body>
