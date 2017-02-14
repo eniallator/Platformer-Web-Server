@@ -11,3 +11,14 @@ fetch("/maps").then(data => {
     })
   })
 });
+
+/*
+Todo file upload using this:
+
+$(".js-file-input").on("change", uploadFile);
+*/
+
+$(".js-file-upload").on("click", function(event) {
+	event.preventDefault()
+	$(".js-file-input").click();
+});
