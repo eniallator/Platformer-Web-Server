@@ -11,15 +11,12 @@ var config = {
 }
 
 function runDbQuery (querySql, values = [], callback) {
-  console.log('IN RUNDBQUERY AYYAYAYAYAYAYAYAY')
   var pool = new pg.Pool(config)
 
   pool.connect(function (err, client, done) {
     if (err) {
       return console.error('error fetching client from pool', err)
     }
-
-    // const insertInto = 'INSERT INTO game_maps(id, map_name, map_data) VALUES ($1, $2, $3)'
 
     client.query(querySql, values, function (err, result) {
       // call `done()` to release the client back to the pool

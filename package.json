@@ -36,7 +36,6 @@
     "eslint-plugin-standard": "^2.0.1",
     "hogan-loader": "0.0.2",
     "mustache-loader": "^0.4.1",
-    "mysql": "^2.13.0",
     "style-loader": "^0.13.1",
     "webpack": "1.13.2",
     "webpack-dev-middleware": "^1.8.4"
