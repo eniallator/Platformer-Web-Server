@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/maps', (req, res) => {
-  fs.readdir('./uploads', (err, fileList) => {
+  fs.readdir('./data/default_maps', (err, fileList) => {
     if (err) {
       console.error(err)
     }
@@ -62,7 +62,7 @@ app.get('/maps/:id', ({params: {id: reqId}}, res) => {
 
   console.log(`[Download] : ${reqId}`)
 
-  res.download(path.join(__dirname, 'uploads', reqId))
+  res.download(path.join(__dirname, 'data', 'default_maps', reqId))
 })
 
 app.listen(port, function () {

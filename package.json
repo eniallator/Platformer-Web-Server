@@ -4,7 +4,7 @@
   "description": "The web server for my platformer game that will let you upload and download maps for the game",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "webpack --config webpack.config.js && index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall" : "node db/initDb.js"
