@@ -1,14 +1,16 @@
-var fs = require('fs')
-var runDbQuery = require('./runDbQuery')
+const fs = require('fs')
+const runDbQuery = require('./runDbQuery')
 
-const initTablesSql = fs.readFileSync('./db/sql/initTables.sql').toString()
-const insertGameMapSql = fs.readFileSync('./db/sql/insertGameMap.sql').toString()
+const readSync = fs.readFileSync.bind(fs)
 
-// Before this delete all -1(AKA default, system, blah blah blah) created maps
+const initTablesSql = readSync('./db/sql/initTables.sql').toString()
+const deleteDefaultMapsSql = readSync('./db/sql/deleteDefaultMaps.sql').toString()
+const insertDefaultMapsSql = readSync('./db/sql/insertDefaultMaps.sql').toString()
 
 runDbQuery(initTablesSql)
-  .then(() => runDbQuery(insertGameMapSql, ['Level 1', fs.readFileSync('./uploads/Level 1.map'), -1]))
-  .then(() => runDbQuery(insertGameMapSql, ['Level 2', fs.readFileSync('./uploads/Level 2.map'), -1]))
+  .then(() => runDbQuery(deleteDefaultMapsSql))
+  .then(() => runDbQuery(insertDefaultMapsSql, ['Level 1', readSync('./data/default_maps/Level 1.map'), -1]))
+  .then(() => runDbQuery(insertDefaultMapsSql, ['Level 2', readSync('./data/default_maps/Level 2.map'), -1]))
   .then(() => {
     console.info('Database initialised')
   }).catch(err => {
