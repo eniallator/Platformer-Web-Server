@@ -19,8 +19,6 @@ function runDbQuery (querySql, values = []) {
         return reject(err)
       }
 
-      // console.log(querySql, values)
-
       client.query(querySql, values, (err, result) => {
         // call `done()` to release the client back to the pool
         done()

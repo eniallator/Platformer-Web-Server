@@ -1,12 +1,15 @@
-var express = require('express')
-var multer = require('multer')
-var path = require('path')
-var fs = require('fs')
-var engines = require('consolidate')
-var config = require('./config')
-var app = express()
-var port = process.env.PORT || 3000
-var upload = multer({ dest: 'uploads/' })
+const express = require('express')
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
+const engines = require('consolidate')
+const config = require('./config')
+const runDbQuery = require('./db/runDbQuery')
+
+const app = express()
+const port = process.env.PORT || 3000
+const upload = multer({ dest: 'uploads/' })
+const insertMapSql = fs.readFileSync('./db/sql/insertMap.sql').toString()
 
 function getDistUrl (distType) {
   return 'https://github.com/eniallator/platformer/releases/download/' +
@@ -16,9 +19,9 @@ function getDistUrl (distType) {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var webpackMiddleware = require('webpack-dev-middleware')
-  var webpackConfig = require('./webpack.config')
-  var webpack = require('webpack')
+  const webpackMiddleware = require('webpack-dev-middleware')
+  const webpackConfig = require('./webpack.config')
+  const webpack = require('webpack')
   console.log('in dev')
 
   app.use(webpackMiddleware(webpack(webpackConfig), {
@@ -40,6 +43,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/maps', (req, res) => {
+  // TODO read from database
   fs.readdir('./data/default_maps', (err, fileList) => {
     if (err) {
       console.error(err)
@@ -50,10 +54,20 @@ app.get('/maps', (req, res) => {
 })
 
 app.post('/maps/upload', upload.single('uploadFile'), (req, res) => {
-  console.log('uploadings!', req.file)
-  // TODO extract map from request
+  const mapName = req.file.originalname.replace(/\.map$/, '')
+  const filePath = path.join(__dirname, 'uploads', req.file.filename)
+  const userID = 0
+
   // TODO validate exists/size/basic structure
-  // TODO save to disk
+  runDbQuery(insertMapSql, [mapName, fs.readFileSync(filePath), userID])
+    .then(() => {
+      res.status(200).send('Upload success')
+    }).catch(err => {
+      console.error('Error uploading ' + mapName, err)
+      res.status(500).send('Error uploading')
+    }).then(() => {
+      fs.unlink(filePath)
+    })
 })
 
 app.get('/maps/:id', ({params: {id: reqId}}, res) => {
