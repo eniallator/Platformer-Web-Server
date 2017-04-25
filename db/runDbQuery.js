@@ -1,17 +1,24 @@
-var pg = require('pg')
+const pg = require('pg')
+let conf
 
-var config = {
-  user: 'postgres',
-  database: 'platformer-web-server',
-  password: 'eniallator',
-  host: '127.0.0.1',
-  port: 5432,
+if (process.env.NODE_ENV !== 'production') {
+  conf = require('../devConfig')
+} else {
+  conf = require('../prodConfig')
+}
+
+const dbConf = {
+  user: conf.dbUser,
+  database: conf.dbName,
+  password: conf.dbPassword,
+  host: conf.dbHost,
+  port: conf.dbPort,
   max: 10,
   idleTimeoutMillis: 30000
 }
 
 function runDbQuery (querySql, values = []) {
-  var pool = new pg.Pool(config)
+  var pool = new pg.Pool(dbConf)
   return new Promise((resolve, reject) => {
     console.log('in runDbQuery', querySql, values)
     pool.connect((err, client, done) => {

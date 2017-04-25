@@ -3,7 +3,7 @@ const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
 const engines = require('consolidate')
-const config = require('./config')
+const config = require('./devConfig') // split out into config folder
 const runDbQuery = require('./db/runDbQuery')
 
 const app = express()
