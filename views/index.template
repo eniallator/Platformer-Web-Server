@@ -10,9 +10,8 @@
     <div class="main-content">
       <h1>Niall's Platformer<h1>
       <hr/>
-      <h2>Choose your platform:</h2>
-      <a class="downloads" href="{{windowsDist}}">Windows download</a><br>
-      <a class="downloads" href="{{macDist}}">Mac download</a>
+      <h2>Download</h2>
+      <a class="downloads" href="{{downloadLink}}">itch.io page</a>
       <hr/>
       <a class="js-file-upload" href="#" role="button">Map Upload</a>
       <input class="hidden js-file-input" type="file"></input>

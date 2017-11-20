@@ -3,20 +3,12 @@ const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
 const engines = require('consolidate')
-const config = require('./devConfig') // split out into config folder
 const runDbQuery = require('./db/runDbQuery')
 
 const app = express()
 const port = process.env.PORT || 3000
 const upload = multer({ dest: 'uploads/' })
 const insertMapSql = fs.readFileSync('./db/sql/insertMap.sql').toString()
-
-function getDistUrl (distType) {
-  return 'https://github.com/eniallator/platformer/releases/download/' +
-    config.platformerLabel +
-    config.platformerVersion +
-    `/platformer_${distType}_V${config.platformerVersion}.zip`
-}
 
 if (process.env.NODE_ENV !== 'production') {
   const webpackMiddleware = require('webpack-dev-middleware')
@@ -37,8 +29,7 @@ app.use('/build', express.static('build'))
 
 app.get('/', (req, res) => {
   res.render('index.template', {
-    windowsDist: getDistUrl('windows'),
-    macDist: getDistUrl('mac')
+    downloadLink: 'https://eniallator.itch.io/platformer'
   })
 })
 

@@ -1,6 +1,4 @@
 module.exports = {
-  platformerVersion: '1.0.1',
-  platformerLabel: 'Alpha',
   dbHost: 'ec2-54-247-166-129.eu-west-1.compute.amazonaws.com',
   dbUser: 'pdbsvxvjxgiqts',
   dbName: 'd8htm1amaea4hm',
