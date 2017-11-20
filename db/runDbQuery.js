@@ -13,6 +13,7 @@ const dbConf = {
   password: conf.dbPassword,
   host: conf.dbHost,
   port: conf.dbPort,
+  ssl: conf.ssl,
   max: 10,
   idleTimeoutMillis: 30000
 }

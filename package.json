@@ -7,7 +7,7 @@
     "start": "webpack --config webpack.config.js && node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall" : "node db/initDb.js"
+    "postinstall": "node db/initDb.js"
   },
   "repository": {
     "type": "git",

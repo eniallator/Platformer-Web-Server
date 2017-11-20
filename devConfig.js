@@ -5,5 +5,6 @@ module.exports = {
   dbUser: 'postgres',
   dbName: 'platformer-web-server',
   dbPassword: 'eniallator',
-  dbPort: 5432
+  dbPort: 5432,
+  ssl: false
 }
